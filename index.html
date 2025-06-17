@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Vitor Klein</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #e2e8f0; /* Slate 200 */
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for a sleeker look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b; /* Slate 800 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #60a5fa; /* Blue 400 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6; /* Blue 500 */
+        }
+
+        /* Typing effect cursor */
+        .typing-effect::after {
+            content: '|';
+            animation: blink-caret .75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #60a5fa; } /* Blue 400 */
+        }
+
+        /* Project card hover effect */
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Button hover effect */
+        .btn-primary {
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+        .btn-primary:hover {
+            background-color: #3b82f6; /* Blue 500 */
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navegação -->
+    <nav class="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg fixed w-full z-50 shadow-lg rounded-b-xl">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition duration-300 rounded-lg p-2">
+                &lt;Dev /&gt;
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-300 hover:text-blue-400 transition duration-300 font-medium text-lg rounded-md px-3 py-2">Sobre Mim</a>
+                <a href="#skills" class="text-gray-300 hover:text-blue-400 transition duration-300 font-medium text-lg rounded-md px-3 py-2">Habilidades</a>
+                <a href="#projects" class="text-gray-300 hover:text-blue-400 transition duration-300 font-medium text-lg rounded-md px-3 py-2">Projetos</a>
+                <a href="#contact" class="text-gray-300 hover:text-blue-400 transition duration-300 font-medium text-lg rounded-md px-3 py-2">Contato</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-blue-400 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 rounded-b-xl py-2 px-6">
+            <a href="#about" class="block text-gray-300 hover:text-blue-400 transition duration-300 font-medium text-lg py-2">Sobre Mim</a>
+            <a href="#skills" class="block text-gray-300 hover:text-blue-400 transition duration-300 font-medium text-lg py-2">Habilidades</a>
+            <a href="#projects" class="block text-gray-300 hover:text-blue-400 transition duration-300 font-medium text-lg py-2">Projetos</a>
+            <a href="#contact" class="block text-gray-300 hover:text-blue-400 transition duration-300 font-medium text-lg py-2">Contato</a>
+        </div>
+    </nav>
+
+    <!-- Seção Hero -->
+    <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-gray-800 text-center relative overflow-hidden pt-24 pb-12">
+        <!-- Background Circles - Firulas! -->
+        <div class="absolute inset-0 z-0 opacity-10">
+            <div class="absolute w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob top-1/4 left-1/4"></div>
+            <div class="absolute w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000 top-1/2 right-1/4"></div>
+            <div class="absolute w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000 bottom-1/4 left-1/3"></div>
+        </div>
+        <div class="relative z-10 p-6 max-w-4xl mx-auto">
+            <p class="text-lg md:text-xl text-blue-300 mb-4 animate-fade-in-down">Olá, meu nome é</p>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6 animate-fade-in-up">
+                Vitor Humberto Klein
+            </h1>
+            <div class="flex flex-col md:flex-row items-center justify-center mb-8">
+                <span class="text-2xl md:text-3xl font-semibold text-gray-300 mr-2">Eu sou um</span>
+                <span id="typing-text" class="text-2xl md:text-3xl font-bold text-blue-400 typing-effect"></span>
+            </div>
+            <p class="text-md md:text-lg text-gray-400 max-w-2xl mx-auto mb-10 animate-fade-in-up-slow">
+                Construindo experiências web incríveis, pixel por pixel. Especializado em interfaces responsivas e eficientes, sempre buscando as melhores práticas e tecnologias.
+            </p>
+            <a href="#projects" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg text-lg inline-block animate-bounce-in">
+                Ver Meus Projetos <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Seção Sobre Mim -->
+    <section id="about" class="py-16 md:py-24 bg-slate-800 rounded-lg shadow-xl mx-4 md:mx-auto max-w-6xl -mt-16 relative z-20 p-8 md:p-12">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-white mb-12 relative pb-4">
+                Sobre Mim
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-500 rounded-full"></span>
+            </h2>
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 text-left">
+                <div class="w-full md:w-1/3 flex justify-center">
+                    <img src="https://placehold.co/300x300/4F46E5/FFFFFF?text=Sua+Foto" alt="Sua Foto de Perfil" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-blue-500 shadow-xl transform transition duration-500 hover:scale-105">
+                </div>
+                <div class="w-full md:w-2/3 text-lg leading-relaxed text-gray-300">
+                    <p class="mb-4">
+                        Sou um desenvolvedor web apaixonado por transformar ideias complexas em soluções digitais intuitivas e funcionais. Com X anos de experiência no mercado, foco em criar interfaces de usuário (UI) robustas e experiências de usuário (UX) fluidas, utilizando as tecnologias mais modernas do ecossistema web.
+                    </p>
+                    <p class="mb-4">
+                        Minha jornada na programação começou com <span class="text-blue-400">HTML</span>, <span class="text-blue-400">CSS</span> e <span class="text-blue-400">JavaScript</span>, e rapidamente evoluiu para frameworks como <span class="text-blue-400">React</span> e bibliotecas de estilo como <span class="text-blue-400">Tailwind CSS</span>. Tenho experiência em desenvolvimento <span class="text-blue-400">full-stack</span>, trabalhando tanto no frontend quanto no backend com tecnologias como <span class="text-blue-400">Node.js</span> e bancos de dados <span class="text-blue-400">NoSQL</span>.
+                    </p>
+                    <p>
+                        Acredito no poder do código limpo, da colaboração e da aprendizagem contínua. Estou sempre em busca de novos desafios e oportunidades para aplicar minhas habilidades e crescer profissionalmente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Habilidades -->
+    <section id="skills" class="py-16 md:py-24 bg-slate-900">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-white mb-12 relative pb-4">
+                Minhas Habilidades
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-500 rounded-full"></span>
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Frontend -->
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg flex flex-col items-center border-l-4 border-blue-500 transition duration-300 hover:shadow-2xl">
+                    <i class="fab fa-html5 text-5xl text-orange-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">HTML5</h3>
+                    <p class="text-gray-400 text-sm">Estrutura semântica e acessível.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg flex flex-col items-center border-l-4 border-blue-500 transition duration-300 hover:shadow-2xl">
+                    <i class="fab fa-css3-alt text-5xl text-blue-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">CSS3</h3>
+                    <p class="text-gray-400 text-sm">Estilização moderna e responsiva.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg flex flex-col items-center border-l-4 border-blue-500 transition duration-300 hover:shadow-2xl">
+                    <i class="fab fa-js text-5xl text-yellow-500 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">JavaScript (ES6+)</h3>
+                    <p class="text-gray-400 text-sm">Lógica e interatividade.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg flex flex-col items-center border-l-4 border-blue-500 transition duration-300 hover:shadow-2xl">
+                    <i class="fab fa-react text-5xl text-cyan-400 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">React.js</h3>
+                    <p class="text-gray-400 text-sm">Componentes e SPAs.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg flex flex-col items-center border-l-4 border-blue-500 transition duration-300 hover:shadow-2xl">
+                    <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" class="w-12 h-12 mb-4">
+                    <h3 class="text-xl font-semibold text-white mb-2">Tailwind CSS</h3>
+                    <p class="text-gray-400 text-sm">Desenvolvimento rápido de UI.</p>
+                </div>
+                <!-- Backend -->
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg flex flex-col items-center border-l-4 border-green-500 transition duration-300 hover:shadow-2xl">
+                    <i class="fab fa-node-js text-5xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Node.js</h3>
+                    <p class="text-gray-400 text-sm">Desenvolvimento de APIs e serviços.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg flex flex-col items-center border-l-4 border-green-500 transition duration-300 hover:shadow-2xl">
+                    <img src="https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg" alt="Express.js" class="w-12 h-12 mb-4">
+                    <h3 class="text-xl font-semibold text-white mb-2">Express.js</h3>
+                    <p class="text-gray-400 text-sm">Framework web para Node.js.</p>
+                </div>
+                <!-- Databases -->
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg flex flex-col items-center border-l-4 border-red-500 transition duration-300 hover:shadow-2xl">
+                    <img src="https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg" alt="MongoDB" class="w-12 h-12 mb-4">
+                    <h3 class="text-xl font-semibold text-white mb-2">MongoDB</h3>
+                    <p class="text-gray-400 text-sm">Banco de dados NoSQL.</p>
+                </div>
+                <!-- Tools & Others -->
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg flex flex-col items-center border-l-4 border-gray-500 transition duration-300 hover:shadow-2xl">
+                    <i class="fab fa-git-alt text-5xl text-red-600 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Git</h3>
+                    <p class="text-gray-400 text-sm">Controle de versão.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg flex flex-col items-center border-l-4 border-gray-500 transition duration-300 hover:shadow-2xl">
+                    <i class="fab fa-github text-5xl text-gray-400 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">GitHub</h3>
+                    <p class="text-gray-400 text-sm">Colaboração e repositórios.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg flex flex-col items-center border-l-4 border-gray-500 transition duration-300 hover:shadow-2xl">
+                    <i class="fas fa-terminal text-5xl text-blue-300 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Linha de Comando</h3>
+                    <p class="text-gray-400 text-sm">Ferramentas de desenvolvimento.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg flex flex-col items-center border-l-4 border-gray-500 transition duration-300 hover:shadow-2xl">
+                    <i class="fas fa-cogs text-5xl text-purple-400 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-white mb-2">Metodologias Ágeis</h3>
+                    <p class="text-gray-400 text-sm">Scrum, Kanban.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Projetos -->
+    <section id="projects" class="py-16 md:py-24 bg-slate-800">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-white mb-12 relative pb-4">
+                Meus Projetos
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-500 rounded-full"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Projeto 1 -->
+                <div class="project-card bg-slate-700 rounded-xl shadow-xl overflow-hidden border-t-4 border-blue-500">
+                    <img src="https://placehold.co/600x400/4F46E5/FFFFFF?text=Projeto+01" alt="Projeto 1" class="w-full h-56 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-2xl font-bold text-white mb-3">Nome do Projeto 1</h3>
+                        <p class="text-gray-300 mb-4">
+                            Uma breve descrição deste projeto incrível. Destaque as principais funcionalidades e o que ele resolve.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-blue-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">React</span>
+                            <span class="bg-green-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">Node.js</span>
+                            <span class="bg-purple-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">MongoDB</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <a href="#" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center transition duration-300">
+                                <i class="fas fa-external-link-alt mr-2"></i> Ver Demo
+                            </a>
+                            <a href="#" target="_blank" class="text-gray-400 hover:text-gray-300 flex items-center transition duration-300">
+                                <i class="fab fa-github mr-2"></i> Código
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="project-card bg-slate-700 rounded-xl shadow-xl overflow-hidden border-t-4 border-blue-500">
+                    <img src="https://placehold.co/600x400/34D399/FFFFFF?text=Projeto+02" alt="Projeto 2" class="w-full h-56 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-2xl font-bold text-white mb-3">Nome do Projeto 2</h3>
+                        <p class="text-gray-300 mb-4">
+                            Outro projeto importante com funcionalidades únicas. Aqui você pode falar sobre os desafios técnicos e como os superou.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-blue-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">Next.js</span>
+                            <span class="bg-yellow-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">Firebase</span>
+                            <span class="bg-indigo-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">Tailwind CSS</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <a href="#" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center transition duration-300">
+                                <i class="fas fa-external-link-alt mr-2"></i> Ver Demo
+                            </a>
+                            <a href="#" target="_blank" class="text-gray-400 hover:text-gray-300 flex items-center transition duration-300">
+                                <i class="fab fa-github mr-2"></i> Código
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="project-card bg-slate-700 rounded-xl shadow-xl overflow-hidden border-t-4 border-blue-500">
+                    <img src="https://placehold.co/600x400/FACC15/FFFFFF?text=Projeto+03" alt="Projeto 3" class="w-full h-56 object-cover">
+                    <div class="p-6 text-left">
+                        <h3 class="text-2xl font-bold text-white mb-3">Nome do Projeto 3</h3>
+                        <p class="text-gray-300 mb-4">
+                            Este projeto demonstra uma habilidade específica, como manipulação de dados ou integração com APIs externas.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-red-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">Vue.js</span>
+                            <span class="bg-gray-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">Express.js</span>
+                            <span class="bg-blue-600 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full">PostgreSQL</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <a href="#" target="_blank" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center transition duration-300">
+                                <i class="fas fa-external-link-alt mr-2"></i> Ver Demo
+                            </a>
+                            <a href="#" target="_blank" class="text-gray-400 hover:text-gray-300 flex items-center transition duration-300">
+                                <i class="fab fa-github mr-2"></i> Código
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12">
+                <a href="#" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg text-lg inline-block">
+                    Ver Mais Projetos <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contact" class="py-16 md:py-24 bg-slate-900">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-white mb-12 relative pb-4">
+                Entre em Contato
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-500 rounded-full"></span>
+            </h2>
+            <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                Estou aberto a novas oportunidades e colaborações. Sinta-se à vontade para me enviar uma mensagem ou me conectar nas redes sociais.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6">
+                <a href="mailto:seu.email@example.com" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg flex items-center btn-primary">
+                    <i class="fas fa-envelope mr-3 text-xl"></i> Email
+                </a>
+                <a href="https://linkedin.com/in/seu-perfil" target="_blank" class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg flex items-center btn-primary">
+                    <i class="fab fa-linkedin mr-3 text-xl"></i> LinkedIn
+                </a>
+                <a href="https://github.com/seu-usuario" target="_blank" class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg flex items-center btn-primary">
+                    <i class="fab fa-github mr-3 text-xl"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-900 py-8 text-center text-gray-500 text-sm">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2025 [Seu Nome Aqui]. Todos os direitos reservados.</p>
+            <p class="mt-2">Feito com <i class="fas fa-heart text-red-500"></i> e muito código.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Efeito de digitação no Hero
+        const typingTextElement = document.getElementById('typing-text');
+        const phrases = ["Desenvolvedor Web", "Frontend Developer"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                typingTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                setTimeout(() => isDeleting = true, 1500); 
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(() => {}, 500);
+            }
+
+            const typingSpeed = isDeleting ? 50 : 100;
+            setTimeout(typeEffect, typingSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', typeEffect);
+
+        // Rolagem suave para os links de navegação
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Toggle mobile menu
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Animations on scroll (simple fade-in for sections)
+        const sections = document.querySelectorAll('section');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up-section');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            section.classList.add('opacity-0', 'transform', 'translate-y-10'); /* Initial state for animation */
+            observer.observe(section);
+        });
+
+        // Add Tailwind CSS animation utility classes (example, you'd put these in CSS directly or a config)
+        // These are defined in the <style> tag at the top of the HTML
+        // For custom animations in Tailwind, you'd typically extend tailwind.config.js
+        // For simplicity, these are directly in the style block.
+        const styleTag = document.createElement('style');
+        styleTag.innerHTML += `
+            /* Custom Animations */
+            @keyframes fadeInDown {
+                from { opacity: 0; transform: translateY(-20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in-down { animation: fadeInDown 0.8s ease-out forwards; }
+
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+            .animate-fade-in-up-slow { animation: fadeInUp 1.2s ease-out forwards; }
+
+            @keyframes bounceIn {
+                0% { transform: scale(0.3); opacity: 0; }
+                50% { transform: scale(1.05); opacity: 1; }
+                70% { transform: scale(0.9); }
+                100% { transform: scale(1); }
+            }
+            .animate-bounce-in { animation: bounceIn 0.8s ease-out forwards; }
+
+            @keyframes blob {
+                0% { transform: translate(0px, 0px) scale(1); }
+                33% { transform: translate(30px, -50px) scale(1.1); }
+                66% { transform: translate(-20px, 20px) scale(0.9); }
+                100% { transform: translate(0px, 0px) scale(1); }
+            }
+            .animate-blob { animation: blob 7s infinite cubic-bezier(0.6, 0.01, 0.4, 1); }
+            .animation-delay-2000 { animation-delay: 2s; }
+            .animation-delay-4000 { animation-delay: 4s; }
+
+            /* Animation for sections appearing on scroll */
+            .animate-fade-in-up-section {
+                animation: fadeInUp 1s ease-out forwards;
+            }
+        `;
+        document.head.appendChild(styleTag);
+    </script>
+</body>
+</html>
